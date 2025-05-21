@@ -43,7 +43,7 @@ def convert_mov_to_wav(input_path, output_path):
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return ('index.html')
 
 @app.route('/upload', methods=['POST'])
 def upload_file():
