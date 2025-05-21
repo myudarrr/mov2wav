@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MOV to WAV Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+        .upload-box {
+            border: 2px dashed #ccc;
+            padding: 40px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        .info {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>MOV to WAV Converter</h1>
+    <p>Convert your MOV/MP4 video files to WAV audio format</p>
+    
+    <div class="info">
+        <p><strong>Max file size:</strong> 800MB</p>
+        <p><strong>Supported formats:</strong> .mov, .mp4</p>
+    </div>
+    
+    <form method="POST" action="/upload" enctype="multipart/form-data">
+        <div class="upload-box">
+            <input type="file" name="file" id="file" accept=".mov,.mp4,.MOV,.MP4">
+            <p>or drag and drop your file here</p>
+        </div>
+        <button type="submit">Convert to WAV</button>
+    </form>
+    
+    <script>
+        // Simple drag and drop functionality
+        const uploadBox = document.querySelector('.upload-box');
+        const fileInput = document.getElementById('file');
+        
+        uploadBox.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadBox.style.borderColor = '#4CAF50';
+        });
+        
+        uploadBox.addEventListener('dragleave', () => {
+            uploadBox.style.borderColor = '#ccc';
+        });
+        
+        uploadBox.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadBox.style.borderColor = '#ccc';
+            if (e.dataTransfer.files.length) {
+                fileInput.files = e.dataTransfer.files;
+            }
+        });
+    </script>
+</body>
+</html>
